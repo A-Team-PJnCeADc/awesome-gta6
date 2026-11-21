@@ -1,21 +1,32 @@
-<div align="center">
+<h1 align="center">
+  <a href="https://github.com/Ahmet-Dedeler/awesome-gta6-reverse-engineering">
+    <img src="assets/banner.png" alt="Awesome GTA VI Reverse Engineering" width="100%">
+  </a>
+</h1>
 
-<a href="https://github.com/Ahmet-Dedeler/awesome-gta6-re">
-  <img src="assets/banner.svg" alt="Awesome GTA VI Reverse Engineering - RAGE 9, RPF9, TTPF, ADAT, RDNA2 to SPIR-V and Scarlett Tooling" width="100%">
-</a>
+<p align="center">
+  A curated index of open-source <b>Grand Theft Auto VI</b> reverse engineering tools:<br>
+  RAGE 9 / RPF9 archive explorers, TTPF texture and ADAT/AWC audio decoders,<br>
+  byte-level format specs, and Xbox Series (Scarlett) / PS5 translation layers.
+</p>
 
-# Awesome GTA VI Reverse Engineering
+<p align="center">
+  <a href="https://awesome.re"><img src="https://awesome.re/badge-flat2.svg" alt="Awesome"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-CC0_1.0-1a1b2e?style=flat-square" alt="License: CC0-1.0"></a>
+  <a href="CONTRIBUTING.md"><img src="https://img.shields.io/badge/PRs-welcome-ff5c8a?style=flat-square" alt="PRs welcome"></a>
+  <a href="https://github.com/Ahmet-Dedeler/awesome-gta6-reverse-engineering/commits/main"><img src="https://img.shields.io/github/last-commit/Ahmet-Dedeler/awesome-gta6-reverse-engineering?style=flat-square&color=ff8a3d&label=updated" alt="Last commit"></a>
+</p>
 
-**A curated index of open-source Grand Theft Auto VI (GTA 6 / GTA VI) reverse engineering tools, RAGE 9 / RPF9 archive explorers, TTPF texture and ADAT/AWC audio decoders, binary format specs, and Xbox Series (Scarlett) / PS5 translation layers.**
+<p align="center">
+  <a href="#ecosystem-overview">Map</a> ·
+  <a href="#rpf9-archive--asset-explorers">Archive Explorers</a> ·
+  <a href="#texture-ttpf--audio-adat--awc-tools">Textures &amp; Audio</a> ·
+  <a href="#console-translation-layers--static-recompilation">Recomp &amp; Shims</a> ·
+  <a href="#format-documentation--research">Format Docs</a> ·
+  <a href="#format--architecture-glossary">Glossary</a>
+</p>
 
-[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-[![License: CC0-1.0](https://img.shields.io/badge/License-CC0%201.0-lightgrey.svg)](LICENSE)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-ff3b9a.svg)](CONTRIBUTING.md)
-[![Last Commit](https://img.shields.io/github/last-commit/Ahmet-Dedeler/awesome-gta6-re?color=00e5ff)](https://github.com/Ahmet-Dedeler/awesome-gta6-re/commits/main)
-
-[Ecosystem Map](#ecosystem-overview) · [Archive Explorers](#rpf9-archive--asset-explorers) · [Textures & Audio](#texture-ttpf--audio-adat--awc-tools) · [Recomp & Shims](#console-translation-layers--static-recompilation) · [Format Docs](#format-documentation--research) · [Glossary](#format--architecture-glossary)
-
-</div>
+<br>
 
 > [!IMPORTANT]
 > **Clean-room research and open-source code only.** This list indexes reverse engineering tools, clean-room reimplementations, and format documentation. It does **not** host, link to, or endorse game executables, copyrighted assets, encryption keys, DRM bypass tools, or leaked build downloads. Every tool listed expects you to supply files from your own copy on disk.
@@ -38,11 +49,11 @@
 
 ## Ecosystem Overview
 
-Most active open-source GTA VI reverse engineering targets the Xbox Series X|S (Scarlett) RAGE 9 stack, since Xbox Series runs on x86-64 Zen 2 with RDNA2 (GFX10.3) shaders and a Windows-derived Game OS (`d3d12_xs`, `kernelx`). Early PS5 library-translation efforts exist as well.
+Everything starts with an `RPF9` archive. Explorers open it, then each payload type has its own decoders. Most active work targets the Xbox Series X|S (Scarlett) RAGE 9 stack, since Xbox Series runs on x86-64 Zen 2 with RDNA2 (GFX10.3) shaders and a Windows-derived Game OS (`d3d12_xs`, `kernelx`). Early PS5 library-translation efforts exist as well.
 
-<div align="center">
-  <img src="assets/ecosystem-map.svg" alt="GTA VI RAGE 9 Reverse Engineering Ecosystem Architecture Map" width="100%">
-</div>
+<p align="center">
+  <img src="assets/ecosystem-map.png" alt="Ecosystem map: RPF9 archive explorers feed six payload lanes (textures, audio, video, models and maps, shaders, executable), each with the projects that handle it and what they output" width="100%">
+</p>
 
 ---
 
@@ -80,12 +91,12 @@ Projects translating Xbox Series X|S (`Scarlett`) or PS5 system libraries, memor
 
 | Project | Stack | Target | Focus & Current Status |
 | :--- | :--- | :--- | :--- |
-| [ItsNotRexed/Leonida](https://github.com/ItsNotRexed/Leonida) | Python, C# | Xbox Series -> Windows (Vulkan) | Static recompilation effort for build `1.0.2.1`. Translates all 26,503 RDNA2 shaders to SPIR-V passing `spirv-val`, exports OBJ models / DDS textures / AWC banks, and includes an untested PE loader skeleton. Xbox D3D12 -> Vulkan and booting are not done yet. |
-| [omonkeyz/xbox-emulator](https://github.com/omonkeyz/xbox-emulator) | Rust | Xbox Series X\|S -> Windows | Active continuation of `TomBox` (`TomBox + rage9`). Reimplements `d3d12_xs`, RDNA2 shader translation, unified memory aliasing, and console OS DLLs, with automated per-function progress maps. |
-| [drycheetah84/TomBox](https://github.com/drycheetah84/TomBox) | Rust | Xbox Series X\|S -> Windows | Upstream Xbox Series X\|S API-shimming emulator that `omonkeyz/xbox-emulator` builds upon. |
-| [realdody/americas-recomp (`xbox-series`)](https://github.com/realdody/americas-recomp/tree/xbox-series) | C++ | Xbox Series -> PC | Recompilation runtime (`core/`, `tools/`, `docs/`). Make sure to check the `xbox-series` branch (`main` only holds `LICENSE`). |
-| [californiaAlmonds/OpenScarlett](https://github.com/californiaAlmonds/OpenScarlett) | C++20 (`MIT`) | Xbox Series X\|S -> Windows | Clean-room Scarlett translation layer with PE32+ APC hook loader, `d3d12_xs` COM proxy, `xg_xs` swizzling, `kernelx` memory aliasing, RDNA2 -> SPIR-V/DXIL lifter, GDeflate/BCPack/XMA2/Bink2 codecs, and GDK shims. |
-| [JamesCicada/GTAVI-Recomp](https://github.com/JamesCicada/GTAVI-Recomp) | C++ | PS5 -> PC | Early AnyPS5-style library translation layer. Build system, core primitives, and diagnostic tests are in place; PS5 system libraries are not implemented yet. |
+| [ItsNotRexed/Leonida](https://github.com/ItsNotRexed/Leonida) | Python, C# | Xbox Series → Windows (Vulkan) | Static recompilation effort for build `1.0.2.1`. Translates all 26,503 RDNA2 shaders to SPIR-V passing `spirv-val`, exports OBJ models / DDS textures / AWC banks, and includes an untested PE loader skeleton. Xbox D3D12 → Vulkan and booting are not done yet. |
+| [omonkeyz/xbox-emulator](https://github.com/omonkeyz/xbox-emulator) | Rust | Xbox Series X\|S → Windows | Active continuation of `TomBox` (`TomBox + rage9`). Reimplements `d3d12_xs`, RDNA2 shader translation, unified memory aliasing, and console OS DLLs, with automated per-function progress maps. |
+| [drycheetah84/TomBox](https://github.com/drycheetah84/TomBox) | Rust | Xbox Series X\|S → Windows | Upstream Xbox Series X\|S API-shimming emulator that `omonkeyz/xbox-emulator` builds upon. |
+| [realdody/americas-recomp (`xbox-series`)](https://github.com/realdody/americas-recomp/tree/xbox-series) | C++ | Xbox Series → PC | Recompilation runtime (`core/`, `tools/`, `docs/`). Make sure to check the `xbox-series` branch (`main` only holds `LICENSE`). |
+| [californiaAlmonds/OpenScarlett](https://github.com/californiaAlmonds/OpenScarlett) | C++20 (`MIT`) | Xbox Series X\|S → Windows | Clean-room Scarlett translation layer with PE32+ APC hook loader, `d3d12_xs` COM proxy, `xg_xs` swizzling, `kernelx` memory aliasing, RDNA2 → SPIR-V/DXIL lifter, GDeflate/BCPack/XMA2/Bink2 codecs, and GDK shims. |
+| [JamesCicada/GTAVI-Recomp](https://github.com/JamesCicada/GTAVI-Recomp) | C++ | PS5 → PC | Early AnyPS5-style library translation layer. Build system, core primitives, and diagnostic tests are in place; PS5 system libraries are not implemented yet. |
 
 ---
 

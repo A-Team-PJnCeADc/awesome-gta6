@@ -1,0 +1,62 @@
+<!doctype html>
+<!--
+  GitHub social preview (Settings > General > Social preview).
+  Rendered to assets/social-preview.png at exactly 1280x640 by render.py.
+-->
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="shared.css">
+<style>
+  body { width: 1280px; height: 640px; }
+
+  .card {
+    position: relative;
+    width: 1280px;
+    height: 640px;
+    overflow: hidden;
+    background: var(--night) url("sunset.jpg") 78% 40% / auto 108% no-repeat;
+  }
+  .card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, rgba(8,10,22,0.94) 0%, rgba(8,10,22,0.78) 38%, rgba(8,10,22,0.15) 70%, rgba(8,10,22,0) 85%),
+      linear-gradient(0deg, rgba(8,10,22,0.7) 0%, rgba(8,10,22,0) 34%);
+  }
+
+  .content { position: absolute; inset: 72px 72px 60px; display: flex; flex-direction: column; }
+
+  .eyebrow { font: 500 14px/1 var(--mono); letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-dim); display: flex; gap: 12px; align-items: center; }
+  .eyebrow .rule { width: 28px; height: 1px; background: var(--ink-faint); }
+
+  h1 { margin-top: 34px; font: 900 150px/0.84 var(--sans); letter-spacing: -0.05em; color: var(--ink); }
+  .sub { margin-top: 10px; font: italic 400 86px/1 var(--serif); letter-spacing: -0.01em; color: var(--ink); }
+
+  .bottom { margin-top: auto; display: flex; justify-content: space-between; align-items: flex-end; }
+  .chips { display: flex; gap: 8px; }
+  .chip { font: 500 15px/1 var(--mono); color: var(--ink); padding: 10px 13px; border-radius: 999px; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.16); }
+  .chip b { font-weight: 500; color: var(--amber); }
+  .url { font: 500 14px/1 var(--mono); color: var(--ink-dim); }
+</style>
+</head>
+<body>
+  <div class="card grain">
+    <div class="content">
+      <div class="eyebrow">Awesome list <span class="rule"></span> clean-room <span class="rule"></span> open source</div>
+      <h1>GTA <span class="sunset-text">VI</span></h1>
+      <div class="sub">Reverse Engineering</div>
+      <div class="bottom">
+        <div class="chips">
+          <div class="chip">RPF9</div>
+          <div class="chip">TTPF</div>
+          <div class="chip">ADAT <b>·</b> AWC</div>
+          <div class="chip">RDNA2 <b>→</b> SPIR-V</div>
+        </div>
+        <div class="url">Ahmet-Dedeler/awesome-gta6-reverse-engineering</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

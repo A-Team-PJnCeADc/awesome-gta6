@@ -1,0 +1,113 @@
+<!doctype html>
+<!-- README hero. Rendered to assets/banner.png by render.py (1280x420 CSS px @1.5x). -->
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="shared.css">
+<style>
+  body { width: 1280px; height: 420px; }
+
+  .card {
+    position: relative;
+    width: 1280px;
+    height: 420px;
+    border-radius: 22px;
+    overflow: hidden;
+    background: var(--night) url("sunset.jpg") right 38% / cover no-repeat;
+  }
+
+  /* Darken the empty left sky so the type sits on calm ground. */
+  .card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, rgba(8,10,22,0.92) 0%, rgba(8,10,22,0.72) 34%, rgba(8,10,22,0.18) 62%, rgba(8,10,22,0) 78%),
+      linear-gradient(0deg, rgba(8,10,22,0.55) 0%, rgba(8,10,22,0) 32%);
+  }
+
+  .content {
+    position: absolute;
+    left: 64px;
+    top: 56px;
+    right: 64px;
+    bottom: 48px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .eyebrow {
+    font: 500 12.5px/1 var(--mono);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .eyebrow .rule { width: 28px; height: 1px; background: var(--ink-faint); }
+
+  h1 {
+    margin-top: 26px;
+    font: 900 112px/0.86 var(--sans);
+    letter-spacing: -0.045em;
+    color: var(--ink);
+  }
+
+  .sub {
+    margin-top: 6px;
+    font: italic 400 64px/1 var(--serif);
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+
+  .chips {
+    margin-top: auto;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .chip {
+    font: 500 12.5px/1 var(--mono);
+    color: var(--ink);
+    padding: 8px 11px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.14);
+    backdrop-filter: blur(8px);
+  }
+  .chip b { font-weight: 500; color: var(--amber); }
+
+  .hex {
+    position: absolute;
+    right: 40px;
+    bottom: 30px;
+    font: 400 11px/1.55 var(--mono);
+    color: rgba(255,255,255,0.34);
+    text-align: right;
+    letter-spacing: 0.04em;
+  }
+  .hex span { color: rgba(255,196,107,0.75); }
+</style>
+</head>
+<body>
+  <div class="card grain">
+    <div class="content">
+      <div class="eyebrow">Awesome list <span class="rule"></span> clean-room <span class="rule"></span> open source</div>
+      <h1>GTA <span class="sunset-text">VI</span></h1>
+      <div class="sub">Reverse Engineering</div>
+      <div class="chips">
+        <div class="chip">RPF9</div>
+        <div class="chip">TTPF <b>·</b> BCPack</div>
+        <div class="chip">ADAT <b>·</b> AWC</div>
+        <div class="chip">Bink 2</div>
+        <div class="chip">RDNA2 <b>→</b> SPIR-V</div>
+        <div class="chip">Scarlett <b>·</b> PS5</div>
+      </div>
+    </div>
+    <div class="hex">
+      0x00 &nbsp;<span>39 46 50 52</span> &nbsp;9FPR &nbsp;· rpf9 magic
+    </div>
+  </div>
+</body>
+</html>
