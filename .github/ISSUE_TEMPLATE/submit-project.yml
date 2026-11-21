@@ -1,0 +1,53 @@
+name: Submit a Project
+description: Suggest an open-source RAGE 9, RPF9, or GTA VI reverse engineering tool or format doc
+title: "[Add]: "
+labels: ["addition"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Submit a clean-room, open-source project for inclusion in **Awesome GTA VI Reverse Engineering**.
+        Submissions containing copyrighted game files, encryption keys, or dump links will be closed immediately.
+  - type: input
+    id: repo_url
+    attributes:
+      label: Repository URL
+      placeholder: https://github.com/owner/repo
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      options:
+        - RPF9 Archive & Asset Explorers
+        - Texture (.ttpf) & Audio (ADAT / AWC) Tools
+        - Console Translation Layers & Static Recompilation
+        - Format Documentation & Research
+        - Visualizers & Related Experiments
+    validations:
+      required: true
+  - type: input
+    id: stack
+    attributes:
+      label: Stack / Target Platform
+      placeholder: Rust / Windows, macOS
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: What does it implement?
+      description: Concise, factual summary of working functionality and current status.
+      placeholder: Parses RPF9 archives and decodes TTPF textures to PNG...
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Clean-room verification
+      options:
+        - label: Repository contains real code or technical format docs (not an empty stub or placeholder)
+          required: true
+        - label: Repository does not distribute game binaries, assets, encryption keys, or dump links
+          required: true

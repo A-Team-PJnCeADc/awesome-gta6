@@ -1,0 +1,244 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="760" viewBox="0 0 1280 760" role="img" aria-label="GTA VI RAGE 9 Open-Source Reverse Engineering Ecosystem Map">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090C15"/>
+      <stop offset="100%" stop-color="#101526"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FF3B9A"/>
+      <stop offset="50%" stop-color="#FFB84D"/>
+      <stop offset="100%" stop-color="#00E5FF"/>
+    </linearGradient>
+    <clipPath id="frameClip">
+      <rect x="2" y="2" width="1276" height="756" rx="18"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#frameClip)">
+    <rect width="1280" height="760" fill="url(#bg)"/>
+    <rect x="0" y="0" width="1280" height="4" fill="url(#accentGrad)"/>
+
+    <!-- Header -->
+    <text x="40" y="42" font-family="'Avenir Next', 'Segoe UI', Arial, sans-serif" font-size="22" font-weight="800" fill="#F8FAFC">
+      RAGE 9 / GTA VI OPEN-SOURCE RE ECOSYSTEM
+    </text>
+    <text x="1240" y="40" text-anchor="end" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="12" font-weight="600" fill="#64748B">
+      CLEAN-ROOM TOOLING &amp; FORMAT LAYER MAP
+    </text>
+    <line x1="40" y1="56" x2="1240" y2="56" stroke="#1E2942" stroke-width="1.2"/>
+
+    <!-- LAYER 1: Formats -->
+    <g transform="translate(40, 72)">
+      <rect x="0" y="0" width="1200" height="106" rx="12" fill="#0E1424" stroke="#222E4D" stroke-width="1.2"/>
+      <circle cx="20" cy="21" r="4.5" fill="#9D6BFF"/>
+      <text x="33" y="25" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="12" font-weight="700" letter-spacing="1.2" fill="#C4B5FD">
+        01  CONSOLE ARTIFACTS &amp; BINARY FORMATS
+      </text>
+
+      <!-- 5 boxes: width 218, gap 16 => 5*218 + 4*16 = 1090+64 = 1154 (start x=23) -->
+      <g transform="translate(23, 38)">
+        <rect x="0" y="0" width="218" height="54" rx="8" fill="#151C32" stroke="#9D6BFF" stroke-opacity="0.45"/>
+        <text x="14" y="23" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="13.5" font-weight="700" fill="#F1F5F9">RPF9 Archives</text>
+        <text x="14" y="41" font-family="'Avenir Next', 'Segoe UI', Arial, sans-serif" font-size="11.5" fill="#94A3B8">9FPR · PSIN · zlib / nested</text>
+
+        <rect x="234" y="0" width="218" height="54" rx="8" fill="#151C32" stroke="#9D6BFF" stroke-opacity="0.45"/>
+        <text x="248" y="23" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="13.5" font-weight="700" fill="#F1F5F9">TTPF &amp; BCPack</text>
+        <text x="248" y="41" font-family="'Avenir Next', 'Segoe UI', Arial, sans-serif" font-size="11.5" fill="#94A3B8">BC1-BC7 · Gfx10 GPU swizzle</text>
+
+        <rect x="468" y="0" width="218" height="54" rx="8" fill="#151C32" stroke="#9D6BFF" stroke-opacity="0.45"/>
+        <text x="482" y="23" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="13.5" font-weight="700" fill="#F1F5F9">ADAT / AWC Audio</text>
+        <text x="482" y="41" font-family="'Avenir Next', 'Segoe UI', Arial, sans-serif" font-size="11.5" fill="#94A3B8">Opus &amp; XMA2 stream banks</text>
+
+        <rect x="702" y="0" width="218" height="54" rx="8" fill="#151C32" stroke="#9D6BFF" stroke-opacity="0.45"/>
+        <text x="716" y="23" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="13.5" font-weight="700" fill="#F1F5F9">Models &amp; BK2</text>
+        <text x="716" y="41" font-family="'Avenir Next', 'Segoe UI', Arial, sans-serif" font-size="11.5" fill="#94A3B8">Drawables · Map meta · Bink2</text>
+
+        <rect x="936" y="0" width="218" height="54" rx="8" fill="#151C32" stroke="#9D6BFF" stroke-opacity="0.45"/>
+        <text x="950" y="23" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="13.5" font-weight="700" fill="#F1F5F9">RDNA2 &amp; PE32+</text>
+        <text x="950" y="41" font-family="'Avenir Next', 'Segoe UI', Arial, sans-serif" font-size="11.5" fill="#94A3B8">GFX10.3 shaders · d3d12_xs</text>
+      </g>
+    </g>
+
+    <!-- Connectors 1 -> 2 -->
+    <g stroke="#334155" stroke-width="1.5">
+      <line x1="340" y1="178" x2="340" y2="198"/>
+      <line x1="640" y1="178" x2="640" y2="198"/>
+      <line x1="940" y1="178" x2="940" y2="198"/>
+    </g>
+    <polygon points="336,195 344,195 340,201" fill="#00E5FF"/>
+    <polygon points="636,195 644,195 640,201" fill="#00E5FF"/>
+    <polygon points="936,195 944,195 940,201" fill="#00E5FF"/>
+
+    <!-- LAYER 2: RPF9 Archive Explorers & Extractors -->
+    <g transform="translate(40, 202)">
+      <rect x="0" y="0" width="1200" height="172" rx="12" fill="#0E1424" stroke="#222E4D" stroke-width="1.2"/>
+      <circle cx="20" cy="21" r="4.5" fill="#00E5FF"/>
+      <text x="33" y="25" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="12" font-weight="700" letter-spacing="1.2" fill="#67E8F9">
+        02  RPF9 ARCHIVE EXPLORERS &amp; ASSET EXTRACTORS
+      </text>
+
+      <!-- 4-col x 2-row grid: card width 276, gap 16 => 4*276 + 3*16 = 1152 (x=24) -->
+      <g transform="translate(24, 38)">
+        <!-- Row 1 -->
+        <rect x="0" y="0" width="276" height="54" rx="8" fill="#131C31" stroke="#00E5FF" stroke-opacity="0.5"/>
+        <text x="14" y="22" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="13.5" font-weight="700" fill="#F8FAFC">PercyStar</text>
+        <text x="262" y="22" text-anchor="end" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="11" fill="#00E5FF">Rust · Win</text>
+        <text x="14" y="41" font-family="'Avenir Next', 'Segoe UI', Arial, sans-serif" font-size="11.5" fill="#94A3B8">Fast explorer + D3D11 Bink2 &amp; Opus</text>
+
+        <rect x="292" y="0" width="276" height="54" rx="8" fill="#131C31" stroke="#00E5FF" stroke-opacity="0.5"/>
+        <text x="306" y="22" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="13.5" font-weight="700" fill="#F8FAFC">Percy6Stars</text>
+        <text x="554" y="22" text-anchor="end" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="11" fill="#00E5FF">Rust · Mac/Win</text>
+        <text x="306" y="41" font-family="'Avenir Next', 'Segoe UI', Arial, sans-serif" font-size="11.5" fill="#94A3B8">In-app BK2, AWC audio, 3D viewer</text>
+
+        <rect x="584" y="0" width="276" height="54" rx="8" fill="#131C31" stroke="#00E5FF" stroke-opacity="0.5"/>
+        <text x="598" y="22" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="13.5" font-weight="700" fill="#F8FAFC">SixNG</text>
+        <text x="846" y="22" text-anchor="end" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="11" fill="#00E5FF">Rust · CLI/GUI</text>
+        <text x="598" y="41" font-family="'Avenir Next', 'Segoe UI', Arial, sans-serif" font-size="11.5" fill="#94A3B8">Models to glTF, textures, map data</text>
+
+        <rect x="876" y="0" width="276" height="54" rx="8" fill="#131C31" stroke="#00E5FF" stroke-opacity="0.5"/>
+        <text x="890" y="22" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="13.5" font-weight="700" fill="#F8FAFC">rpf9-explorer</text>
+        <text x="1138" y="22" text-anchor="end" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="11" fill="#00E5FF">C# · Win</text>
+        <text x="890" y="41" font-family="'Avenir Next', 'Segoe UI', Arial, sans-serif" font-size="11.5" fill="#94A3B8">Preview, export, replacement projects</text>
+
+        <!-- Row 2 (3 cards centered or left-aligned 368w? Keeping 4-col grid alignment with 3 cards + summary note card looks super neat!) -->
+        <rect x="0" y="66" width="276" height="54" rx="8" fill="#131C31" stroke="#00E5FF" stroke-opacity="0.4"/>
+        <text x="14" y="88" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="13.5" font-weight="700" fill="#F8FAFC">RageForge</text>
+        <text x="262" y="88" text-anchor="end" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="11" fill="#00E5FF">C# · GUI/CLI</text>
+        <text x="14" y="107" font-family="'Avenir Next', 'Segoe UI', Arial, sans-serif" font-size="11.5" fill="#94A3B8">RPF9 inspector + Gfx10 TTPF decode</text>
+
+        <rect x="292" y="66" width="276" height="54" rx="8" fill="#131C31" stroke="#00E5FF" stroke-opacity="0.4"/>
+        <text x="306" y="88" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="13.5" font-weight="700" fill="#F8FAFC">rpf9-extract</text>
+        <text x="554" y="88" text-anchor="end" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="11" fill="#00E5FF">Rust · CLI</text>
+        <text x="306" y="107" font-family="'Avenir Next', 'Segoe UI', Arial, sans-serif" font-size="11.5" fill="#94A3B8">Clean CLI extractor + PSIN dumps</text>
+
+        <rect x="584" y="66" width="276" height="54" rx="8" fill="#131C31" stroke="#00E5FF" stroke-opacity="0.4"/>
+        <text x="598" y="88" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="13.5" font-weight="700" fill="#F8FAFC">zeozeozeo/rpf9</text>
+        <text x="846" y="88" text-anchor="end" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="11" fill="#00E5FF">Rust · Crate</text>
+        <text x="598" y="107" font-family="'Avenir Next', 'Segoe UI', Arial, sans-serif" font-size="11.5" fill="#94A3B8">Minimal archive parser library</text>
+
+        <rect x="876" y="66" width="276" height="54" rx="8" fill="#101729" stroke="#334155" stroke-dasharray="4 3"/>
+        <text x="890" y="88" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="12.5" font-weight="600" fill="#94A3B8">Shared Capabilities</text>
+        <text x="890" y="107" font-family="'Avenir Next', 'Segoe UI', Arial, sans-serif" font-size="11.5" fill="#64748B">Unpacking · Mesh OBJ/glTF · Salvage</text>
+      </g>
+    </g>
+
+    <!-- Connectors 2 -> 3 -->
+    <g stroke="#334155" stroke-width="1.5">
+      <line x1="340" y1="374" x2="340" y2="394"/>
+      <line x1="640" y1="374" x2="640" y2="394"/>
+      <line x1="940" y1="374" x2="940" y2="394"/>
+    </g>
+    <polygon points="336,391 344,391 340,397" fill="#FF3B9A"/>
+    <polygon points="636,391 644,391 640,397" fill="#FF3B9A"/>
+    <polygon points="936,391 944,391 940,397" fill="#FF3B9A"/>
+
+    <!-- LAYER 3: Media Decoders, Format Docs & Research -->
+    <g transform="translate(40, 398)">
+      <rect x="0" y="0" width="1200" height="172" rx="12" fill="#0E1424" stroke="#222E4D" stroke-width="1.2"/>
+      <circle cx="20" cy="21" r="4.5" fill="#FF3B9A"/>
+      <text x="33" y="25" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="12" font-weight="700" letter-spacing="1.2" fill="#F9A8D4">
+        03  TEXTURE / AUDIO DECODERS, FORMAT SPECS &amp; VISUALIZERS
+      </text>
+
+      <g transform="translate(24, 38)">
+        <!-- Row 1: Media Decoders + Visualizers -->
+        <rect x="0" y="0" width="276" height="54" rx="8" fill="#1C1429" stroke="#FF3B9A" stroke-opacity="0.5"/>
+        <text x="14" y="22" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="13.5" font-weight="700" fill="#F8FAFC">ttpf-studio</text>
+        <text x="262" y="22" text-anchor="end" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="11" fill="#FF3B9A">Python · GUI</text>
+        <text x="14" y="41" font-family="'Avenir Next', 'Segoe UI', Arial, sans-serif" font-size="11.5" fill="#94A3B8">TTPF edit/scan · RPF9 · OBJ · Bink</text>
+
+        <rect x="292" y="0" width="276" height="54" rx="8" fill="#1C1429" stroke="#FF3B9A" stroke-opacity="0.5"/>
+        <text x="306" y="22" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="13.5" font-weight="700" fill="#F8FAFC">ttpf-viewer</text>
+        <text x="554" y="22" text-anchor="end" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="11" fill="#FF3B9A">Rust · Cross</text>
+        <text x="306" y="41" font-family="'Avenir Next', 'Segoe UI', Arial, sans-serif" font-size="11.5" fill="#94A3B8">Drag-drop TTPF gallery + PNG export</text>
+
+        <rect x="584" y="0" width="276" height="54" rx="8" fill="#1C1429" stroke="#FF3B9A" stroke-opacity="0.5"/>
+        <text x="598" y="22" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="13.5" font-weight="700" fill="#F8FAFC">rpf9-audio</text>
+        <text x="846" y="22" text-anchor="end" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="11" fill="#FF3B9A">Python · CLI</text>
+        <text x="598" y="41" font-family="'Avenir Next', 'Segoe UI', Arial, sans-serif" font-size="11.5" fill="#94A3B8">Read-only ADAT/AWC -&gt; WAV / Opus</text>
+
+        <rect x="876" y="0" width="276" height="54" rx="8" fill="#1C1429" stroke="#FF3B9A" stroke-opacity="0.4"/>
+        <text x="890" y="22" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="13.5" font-weight="700" fill="#F8FAFC">weather / bink-mac</text>
+        <text x="1138" y="22" text-anchor="end" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="11" fill="#FF3B9A">TS / Obj-C</text>
+        <text x="890" y="41" font-family="'Avenir Next', 'Segoe UI', Arial, sans-serif" font-size="11.5" fill="#94A3B8">WebGL2 timecycle &amp; macOS BK2 player</text>
+
+        <!-- Row 2: Format Docs & Research -->
+        <rect x="0" y="66" width="276" height="54" rx="8" fill="#102124" stroke="#2EE59D" stroke-opacity="0.5"/>
+        <text x="14" y="88" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#F8FAFC">GTA6-Asset-Info</text>
+        <text x="262" y="88" text-anchor="end" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="10.5" fill="#2EE59D">walkthestars</text>
+        <text x="14" y="107" font-family="'Avenir Next', 'Segoe UI', Arial, sans-serif" font-size="11.5" fill="#94A3B8">17-part RPF9/TTPF/BCPack/map spec</text>
+
+        <rect x="292" y="66" width="276" height="54" rx="8" fill="#102124" stroke="#2EE59D" stroke-opacity="0.5"/>
+        <text x="306" y="88" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#F8FAFC">GTA6-Asset-Info</text>
+        <text x="554" y="88" text-anchor="end" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="10.5" fill="#2EE59D">Trinitron · Active</text>
+        <text x="306" y="107" font-family="'Avenir Next', 'Segoe UI', Arial, sans-serif" font-size="11.5" fill="#94A3B8">Byte-level structure/ notes + PRs</text>
+
+        <rect x="584" y="66" width="276" height="54" rx="8" fill="#102124" stroke="#2EE59D" stroke-opacity="0.5"/>
+        <text x="598" y="88" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#F8FAFC">gta-vi-port-research</text>
+        <text x="846" y="88" text-anchor="end" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="10.5" fill="#2EE59D">Python</text>
+        <text x="598" y="107" font-family="'Avenir Next', 'Segoe UI', Arial, sans-serif" font-size="11.5" fill="#94A3B8">Xbox-to-PC handbook &amp; inspect scripts</text>
+
+        <rect x="876" y="66" width="276" height="54" rx="8" fill="#102124" stroke="#2EE59D" stroke-opacity="0.4"/>
+        <text x="890" y="88" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#F8FAFC">RPF9-tools</text>
+        <text x="1138" y="88" text-anchor="end" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="10.5" fill="#2EE59D">C / Py</text>
+        <text x="890" y="107" font-family="'Avenir Next', 'Segoe UI', Arial, sans-serif" font-size="11.5" fill="#94A3B8">Byte-level recovery &amp; ADAT C scripts</text>
+      </g>
+    </g>
+
+    <!-- Connectors 3 -> 4 -->
+    <g stroke="#334155" stroke-width="1.5">
+      <line x1="340" y1="570" x2="340" y2="590"/>
+      <line x1="640" y1="570" x2="640" y2="590"/>
+      <line x1="940" y1="570" x2="940" y2="590"/>
+    </g>
+    <polygon points="336,587 344,587 340,593" fill="#FFB84D"/>
+    <polygon points="636,587 644,587 640,593" fill="#FFB84D"/>
+    <polygon points="936,587 944,587 940,593" fill="#FFB84D"/>
+
+    <!-- LAYER 4: Console Translation Layers & Static Recompilation -->
+    <g transform="translate(40, 594)">
+      <rect x="0" y="0" width="1200" height="150" rx="12" fill="#0E1424" stroke="#222E4D" stroke-width="1.2"/>
+      <circle cx="20" cy="21" r="4.5" fill="#FFB84D"/>
+      <text x="33" y="25" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="12" font-weight="700" letter-spacing="1.2" fill="#FCD34D">
+        04  CONSOLE TRANSLATION LAYERS &amp; STATIC RECOMPILATION (XBOX SERIES / PS5)
+      </text>
+
+      <!-- 3-col x 2-row grid: card width 373, gap 16 => 3*373 + 2*16 = 1151 (x=24) -->
+      <g transform="translate(24, 38)">
+        <!-- Row 1 -->
+        <rect x="0" y="0" width="373" height="44" rx="8" fill="#1F1A14" stroke="#FFB84D" stroke-opacity="0.55"/>
+        <text x="14" y="18" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="13.5" font-weight="700" fill="#F8FAFC">ItsNotRexed/Leonida</text>
+        <text x="359" y="18" text-anchor="end" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="11" fill="#FFB84D">Python / C#</text>
+        <text x="14" y="34" font-family="'Avenir Next', 'Segoe UI', Arial, sans-serif" font-size="11.5" fill="#94A3B8">26,503 RDNA2-&gt;SPIR-V shaders, asset export, PE skeleton</text>
+
+        <rect x="389" y="0" width="373" height="44" rx="8" fill="#1F1A14" stroke="#FFB84D" stroke-opacity="0.55"/>
+        <text x="403" y="18" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="13.5" font-weight="700" fill="#F8FAFC">omonkeyz/xbox-emulator</text>
+        <text x="748" y="18" text-anchor="end" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="11" fill="#FFB84D">Rust · Win</text>
+        <text x="403" y="34" font-family="'Avenir Next', 'Segoe UI', Arial, sans-serif" font-size="11.5" fill="#94A3B8">TomBox + rage9 Xbox Series OS &amp; D3D12.x continuation</text>
+
+        <rect x="778" y="0" width="373" height="44" rx="8" fill="#1F1A14" stroke="#FFB84D" stroke-opacity="0.45"/>
+        <text x="792" y="18" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="13.5" font-weight="700" fill="#F8FAFC">drycheetah84/TomBox</text>
+        <text x="1137" y="18" text-anchor="end" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="11" fill="#FFB84D">Rust · Win</text>
+        <text x="792" y="34" font-family="'Avenir Next', 'Segoe UI', Arial, sans-serif" font-size="11.5" fill="#94A3B8">Upstream Xbox Series X|S API-shimming runtime</text>
+
+        <!-- Row 2 -->
+        <rect x="0" y="54" width="373" height="44" rx="8" fill="#1F1A14" stroke="#FFB84D" stroke-opacity="0.45"/>
+        <text x="14" y="72" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="13.5" font-weight="700" fill="#F8FAFC">realdody/americas-recomp</text>
+        <text x="359" y="72" text-anchor="end" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="11" fill="#FFB84D">C++ · xbox-series</text>
+        <text x="14" y="88" font-family="'Avenir Next', 'Segoe UI', Arial, sans-serif" font-size="11.5" fill="#94A3B8">Xbox Series recompilation core &amp; tooling branch</text>
+
+        <rect x="389" y="54" width="373" height="44" rx="8" fill="#1F1A14" stroke="#FFB84D" stroke-opacity="0.55"/>
+        <text x="403" y="72" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="13.5" font-weight="700" fill="#F8FAFC">californiaAlmonds/OpenScarlett</text>
+        <text x="748" y="72" text-anchor="end" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="11" fill="#FFB84D">C++20 · MIT</text>
+        <text x="403" y="88" font-family="'Avenir Next', 'Segoe UI', Arial, sans-serif" font-size="11.5" fill="#94A3B8">Clean-room d3d12_xs, kernelx, RDNA2 lifter &amp; codecs</text>
+
+        <rect x="778" y="54" width="373" height="44" rx="8" fill="#1F1A14" stroke="#FFB84D" stroke-opacity="0.4"/>
+        <text x="792" y="72" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="13.5" font-weight="700" fill="#F8FAFC">JamesCicada/GTAVI-Recomp</text>
+        <text x="1137" y="72" text-anchor="end" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="11" fill="#FFB84D">C++ · PS5</text>
+        <text x="792" y="88" font-family="'Avenir Next', 'Segoe UI', Arial, sans-serif" font-size="11.5" fill="#94A3B8">Early PS5 library translation layer (AnyPS5-style)</text>
+      </g>
+    </g>
+  </g>
+
+  <rect x="2" y="2" width="1276" height="756" rx="18" fill="none" stroke="#222E4D" stroke-width="1.5"/>
+</svg>
