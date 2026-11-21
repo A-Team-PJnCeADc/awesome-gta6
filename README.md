@@ -80,7 +80,7 @@ Focused decoders for RAGE 9 GPU-tiled texture packs (`.ttpf`, `BCPack`, `Gfx10` 
 | Project | Stack | Platform | Focus |
 | :--- | :--- | :--- | :--- |
 | [woreksami/ttpf-studio](https://github.com/woreksami/ttpf-studio) | Python | Cross-platform (GUI) | View, export, and replace `.ttpf` textures (BC1-BC7, RGBA8/BGRA8/RGBA16F, GPU unswizzling, headerless scan recovery), recover RPF9 files, export models to OBJ, and play Bink video. |
-| [paryzius/ttpf-viewer](https://github.com/paryzius/ttpf-viewer) | Rust | Windows, macOS, Linux | Standalone drag-and-drop `.ttpf` gallery inspecting formats, dimensions, mip chains, and GPU tile layouts with batch PNG export. |
+| [paryzius/ttpf-viewer](https://github.com/paryzius/ttpf-viewer) | Rust (`MIT`) | Windows (`.exe`), macOS / Linux from source | Fast `.ttpf` gallery and extractor. Decodes BC1-BC7, BC6H HDR, and uncompressed formats with exact Gfx10 tile/mip layouts, shows cube maps in 3D and texture arrays per slice, exports PNG, lossless DDS (mips kept), or 360° panoramas, and searches or batch-extracts whole folders. Includes a CLI and a documented `RDS5`/`ETPF` header spec. BCPack-only mips are not decodable yet. |
 | [jaylikesbunda/rpf9-audio](https://github.com/jaylikesbunda/rpf9-audio) | Python | Cross-platform (CLI) | Dependency-free, read-only RPF9 and `ADAT`/AWC audio research toolkit. Extracts Opus packets, decodes to WAV, and remuxes playable Ogg Opus. |
 
 ---
