@@ -115,7 +115,7 @@ Byte-level specifications, field confidence tables, and reproducible inspection 
 Standalone graphics and media tools built alongside GTA VI / RPF9 format exploration.
 
 - [Ahmet-Dedeler/weather-study](https://github.com/Ahmet-Dedeler/weather-study) (`TypeScript / WebGL2`) - Open-source WebGL2 weather engine and timecycle visualizer with volumetric clouds, ocean reflections, branching lightning, and 4K capture, inspired by RPF9 research.
-- [Ahmet-Dedeler/bink-player-mac](https://github.com/Ahmet-Dedeler/bink-player-mac) (`Objective-C / macOS`) - Native macOS Bink2 (`.bk2`) video player, plus `tools/bk2mp4.sh` to convert `.bk2` to mp4 with video and all audio tracks using librempeg's open-source Bink 2 decoder (made bit-exact with RAD on 1080p/1440p in [librempeg#217](https://github.com/librempeg/librempeg/pull/217)), no RAD code.
+- [Ahmet-Dedeler/bink-player-mac](https://github.com/Ahmet-Dedeler/bink-player-mac) (`Objective-C / macOS`) - Native macOS Bink2 (`.bk2`) video player, plus `tools/bk2mp4.sh` to convert `.bk2` to mp4 with video and all audio tracks using librempeg's open-source Bink 2 decoder (made bit-exact with RAD on 1080p/1440p in [librempeg#217](https://github.com/librempeg/librempeg/pull/217), merged upstream), no RAD code.
 
 
 **See also:** [PortWatch VI](https://github.com/4lwayz/portwatch-vi), a daily tracker of the PC port efforts that also flags clone networks and re-uploads of tracked projects.
