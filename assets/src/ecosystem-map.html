@@ -1,192 +1,71 @@
 <!doctype html>
 <!--
-  "How the pieces fit" map. Rendered to assets/ecosystem-map.png by render.py.
-  Each lane = one payload type pulled out of an RPF9 archive:
-  format -> the listed projects that handle it -> what you get out.
-  Keep tool names in sync with README.md when entries change.
+  Ecosystem strip. Rendered to assets/ecosystem-map.png by render.py (960 CSS px @2x).
+  Seven flat bands in the sunset photo's colours: archives first, then one band per
+  payload type. The big number is how many listed projects work on it.
+  Designed at 960px so the smallest type stays readable at README width (~850px).
+  Keep the COLS / SPECS lists below in sync with README.md when entries change.
 -->
 <html>
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" href="shared.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;900&family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@700&display=block">
 <style>
-  body { width: 1280px; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: transparent; -webkit-font-smoothing: antialiased; }
+  body { width: 960px; }
+  :root { --mono: "IBM Plex Mono", ui-monospace, monospace; --sans: "IBM Plex Sans", sans-serif; --display: "Archivo", sans-serif; }
 
-  .card {
-    position: relative;
-    width: 1280px;
-    border-radius: 22px;
-    overflow: hidden;
-    padding: 52px 56px 48px;
-    color: var(--ink);
-    background:
-      radial-gradient(900px 380px at 100% 0%, rgba(255,92,138,0.16), transparent 70%),
-      radial-gradient(700px 360px at 0% 100%, rgba(154,140,255,0.12), transparent 70%),
-      linear-gradient(180deg, #0f1022 0%, #0b0c18 100%);
-  }
-
-  header { display: flex; align-items: flex-end; justify-content: space-between; }
-  .kicker { font: 500 12px/1 var(--mono); letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-faint); }
-  h2 { margin-top: 14px; font: 800 40px/1 var(--sans); letter-spacing: -0.03em; }
-  h2 em { font: italic 400 46px/1 var(--serif); letter-spacing: -0.01em; }
-  .legend { display: flex; gap: 22px; font: 500 12px/1 var(--mono); color: var(--ink-dim); }
-  .legend span { display: flex; align-items: center; gap: 8px; }
-  .legend i { width: 18px; height: 1px; background: var(--ink-faint); display: inline-block; }
-
-  /* Grid: [archive spine] [format] [tools] [output] */
-  .map {
-    margin-top: 40px;
-    display: grid;
-    grid-template-columns: 206px 226px 1fr 176px;
-    column-gap: 0;
-  }
-
-  .spine {
-    grid-row: 1 / span 6;
-    margin-right: 28px;
-    border-radius: 16px;
-    padding: 22px 20px;
-    background: linear-gradient(180deg, rgba(255,138,61,0.14), rgba(255,92,138,0.10) 55%, rgba(154,140,255,0.10));
-    border: 1px solid rgba(255,170,120,0.28);
-    display: flex;
-    flex-direction: column;
-  }
-  .spine .label { font: 500 11px/1 var(--mono); letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber); }
-  .spine .big { margin-top: 12px; font: 800 44px/0.9 var(--sans); letter-spacing: -0.04em; }
-  .spine .desc { margin-top: 10px; font: 400 13.5px/1.45 var(--sans); color: var(--ink-dim); }
-  .spine .explorers { margin-top: auto; display: flex; flex-direction: column; gap: 7px; }
-  .spine .explorers div { white-space: nowrap; font: 500 12.5px/1 var(--mono); color: var(--ink); opacity: 0.92; }
-  .spine .explorers div::before { content: "› "; color: var(--amber); }
-  .spine .explorers .t { font: 500 10.5px/1 var(--mono); letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 4px; opacity: 1; }
-  .spine .explorers .t::before { content: none; }
-
-  .lane { display: contents; }
-  .lane > div { border-top: 1px solid var(--line); padding: 18px 0; display: flex; align-items: center; }
-  .lane:first-of-type > div { border-top-color: transparent; }
-
-  .fmt { gap: 14px; padding-right: 20px !important; position: relative; }
-  .fmt::before { content: ""; position: absolute; left: -28px; top: 50%; width: 22px; height: 1px; background: rgba(255,170,120,0.35); }
-  .dot { width: 10px; height: 10px; border-radius: 50%; flex: none; box-shadow: 0 0 0 4px color-mix(in srgb, currentColor 18%, transparent); }
-  .fmt .name { font: 700 19px/1.1 var(--sans); letter-spacing: -0.01em; }
-  .fmt .spec { margin-top: 5px; font: 500 11.5px/1.3 var(--mono); color: var(--ink-faint); }
-
-  .tools { gap: 7px; flex-wrap: wrap; position: relative; padding-left: 28px !important; padding-right: 28px !important; }
-  .tools::before {
-    content: ""; position: absolute; left: 0; top: 50%; width: 18px; height: 1px; background: var(--ink-faint);
-  }
-  .pill {
-    font: 500 12.5px/1 var(--mono);
-    padding: 8px 11px;
-    border-radius: 999px;
-    background: rgba(255,255,255,0.045);
-    border: 1px solid var(--line-strong);
-    white-space: nowrap;
-  }
-  .pill.wip { border-style: dashed; color: var(--ink-dim); }
-
-  .out { justify-content: flex-start; gap: 12px; position: relative; }
-  .out::before { content: "→"; font: 400 18px/1 var(--sans); color: var(--ink-faint); }
-  .out .o { font: 600 15px/1.25 var(--sans); }
-  .out .o small { display: block; margin-top: 3px; font: 500 11px/1.3 var(--mono); color: var(--ink-faint); }
-
-  .base {
-    margin-top: 26px;
-    border-radius: 16px;
-    padding: 20px 22px;
-    background: rgba(255,255,255,0.035);
-    border: 1px solid var(--line);
-    display: flex;
-    align-items: center;
-    gap: 22px;
-  }
-  .base .label { font: 500 11px/1.4 var(--mono); letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal); flex: none; width: 168px; }
-  .base .label b { display: block; font: 700 17px/1.2 var(--sans); letter-spacing: -0.01em; text-transform: none; color: var(--ink); margin-top: 4px; }
-  .base .docs { display: flex; gap: 7px; flex-wrap: wrap; }
-
-  footer { margin-top: 22px; display: flex; justify-content: space-between; font: 500 11.5px/1 var(--mono); color: var(--ink-faint); }
+  .card { width: 960px; border-radius: 10px; overflow: hidden; background: #17132e; }
+  .cols { display: grid; grid-template-columns: repeat(7, 1fr); align-items: stretch; }
+  .col { padding: 18px 13px 20px; color: #fff; min-height: 372px; display: flex; flex-direction: column; }
+  .col.lt { color: #1a1206; }
+  .c { font: 900 44px/0.9 var(--display); letter-spacing: -0.04em; }
+  .n { margin-top: 10px; white-space: nowrap; font: 700 16px/1.1 var(--display); letter-spacing: -0.01em; }
+  .sp { margin-top: 5px; font: 500 10.5px/1.35 var(--mono); opacity: 0.72; min-height: 29px; }
+  .tl { margin-top: 12px; padding-top: 11px; border-top: 1px solid currentColor; font: 500 12px/1.62 var(--mono); }
+  .tl div { white-space: nowrap; }
+  .o { margin-top: auto; padding-top: 14px; font: 700 13.5px/1.2 var(--sans); }
+  .o small { display: block; margin-top: 2px; font: 500 10.5px/1.3 var(--mono); opacity: 0.78; }
+  .specs { padding: 12px 13px 13px; font: 500 12px/1.4 var(--mono); color: rgba(255,255,255,0.72); }
+  .specs b { font-weight: 500; color: #f7ab47; }
 </style>
 </head>
 <body>
-<div class="card grain">
-  <header>
-    <div>
-      <div class="kicker">Ecosystem map</div>
-      <h2>From one archive to <em>every format</em></h2>
-    </div>
-    <div class="legend">
-      <span><i></i>handled by</span>
-      <span><i style="border-top:1px dashed var(--ink-faint);background:none"></i>early / not booting yet</span>
-    </div>
-  </header>
-
-  <div class="map">
-    <div class="spine">
-      <div class="label">Container</div>
-      <div class="big">RPF9</div>
-      <div class="desc">Every asset ships inside nested RPF9 archives. Open them first.</div>
-      <div class="explorers">
-        <div class="t">Explorers</div>
-        <div>PercyStar</div>
-        <div>Percy6Stars</div>
-        <div>SixNG</div>
-        <div>rpf9-explorer</div>
-        <div>RageForge</div>
-        <div>rpf9-extract</div>
-        <div>zeozeozeo/rpf9</div>
-      </div>
-    </div>
-
-    <div class="lane">
-      <div class="fmt"><span class="dot" style="color:var(--amber);background:var(--amber)"></span><div><div class="name">Textures</div><div class="spec">TTPF · BCPack · Gfx10</div></div></div>
-      <div class="tools"><span class="pill">ttpf-studio</span><span class="pill">ttpf-viewer</span><span class="pill">RageForge</span><span class="pill">SixNG</span><span class="pill">bcpack-rs</span></div>
-      <div class="out"><div class="o">PNG / DDS<small>BC1–BC7 decoded</small></div></div>
-    </div>
-
-    <div class="lane">
-      <div class="fmt"><span class="dot" style="color:var(--ember);background:var(--ember)"></span><div><div class="name">Audio</div><div class="spec">ADAT · AWC · Opus · XMA2</div></div></div>
-      <div class="tools"><span class="pill">rpf9-audio</span><span class="pill">AWC extractor</span><span class="pill">RPF9-tools</span><span class="pill">PercyStar</span><span class="pill">Percy6Stars</span></div>
-      <div class="out"><div class="o">WAV / Ogg<small>Opus remux</small></div></div>
-    </div>
-
-    <div class="lane">
-      <div class="fmt"><span class="dot" style="color:var(--pink);background:var(--pink)"></span><div><div class="name">Video</div><div class="spec">BK2 · Bink 2</div></div></div>
-      <div class="tools"><span class="pill">PercyStar</span><span class="pill">Percy6Stars</span><span class="pill">bink-player-mac</span><span class="pill">ttpf-studio</span></div>
-      <div class="out"><div class="o">Playback<small>Win · macOS</small></div></div>
-    </div>
-
-    <div class="lane">
-      <div class="fmt"><span class="dot" style="color:var(--magenta);background:var(--magenta)"></span><div><div class="name">Models &amp; maps</div><div class="spec">Drawables · placements</div></div></div>
-      <div class="tools"><span class="pill">SixNG</span><span class="pill">Percy6Stars</span><span class="pill">ttpf-studio</span><span class="pill">Leonida</span><span class="pill">6stars</span><span class="pill">6to5m</span><span class="pill">rage9-re</span></div>
-      <div class="out"><div class="o">glTF / OBJ<small>+ map data</small></div></div>
-    </div>
-
-    <div class="lane">
-      <div class="fmt"><span class="dot" style="color:var(--violet);background:var(--violet)"></span><div><div class="name">Shaders</div><div class="spec">RDNA2 · GFX10.3</div></div></div>
-      <div class="tools"><span class="pill">Leonida</span><span class="pill">americas-recomp</span><span class="pill">OpenScarlett</span><span class="pill">xbox-emulator</span><span class="pill">Xbox2Windows</span><span class="pill">xcl</span></div>
-      <div class="out"><div class="o">SPIR-V / DXIL<small>26,503 lifted</small></div></div>
-    </div>
-
-    <div class="lane">
-      <div class="fmt"><span class="dot" style="color:var(--teal);background:var(--teal)"></span><div><div class="name">Executable</div><div class="spec">PE32+ · d3d12_xs · kernelx</div></div></div>
-      <div class="tools"><span class="pill wip">OpenScarlett</span><span class="pill wip">xbox-emulator</span><span class="pill wip">TomBox</span><span class="pill wip">Xbox2Windows</span><span class="pill wip">xcl</span><span class="pill wip">ScarlettX</span><span class="pill wip">XValkyrie</span><span class="pill wip">TuxBox</span><span class="pill wip">PercyScarlett</span><span class="pill wip">scarlett-layer</span><span class="pill wip">americas-recomp</span><span class="pill wip">GTAVI-Recomp</span></div>
-      <div class="out"><div class="o">PC runtime<small>does not boot yet</small></div></div>
-    </div>
-  </div>
-
-  <div class="base">
-    <div class="label">Under it all<b>Format specs</b></div>
-    <div class="docs">
-      <span class="pill">GTA6-Asset-Info</span>
-      <span class="pill">gta-vi-port-research</span>
-      <span class="pill">RPF9-tools</span>
-      <span class="pill">0x52504639</span><span class="pill">rage9-re</span>
-    </div>
-  </div>
-
-  <footer>
-    <span>Clean-room tools only. Bring your own files.</span>
-    <span>github.com/Ahmet-Dedeler/awesome-gta6-reverse-engineering</span>
-  </footer>
+<div class="card">
+  <div class="cols" id="cols"></div>
+  <div class="specs" id="specs"></div>
 </div>
+<script>
+const COLS = [
+  {name:"Archives", spec:"RPF9 container", out:"Browse / extract", note:"start here",
+   tools:["PercyStar","Percy6Stars","SixNG","6stars","rpf9-explorer","6to5m","RageForge","rpf9-extract","zeozeozeo/rpf9"]},
+  {name:"Textures", spec:"TTPF · BCPack · Gfx10", out:"PNG / DDS", note:"BC1–BC7 decoded",
+   tools:["ttpf-studio","ttpf-viewer","RageForge","SixNG","bcpack-rs"]},
+  {name:"Audio", spec:"ADAT · AWC · Opus · XMA2", out:"WAV / Ogg", note:"Opus remux",
+   tools:["rpf9-audio","AWC extractor","RPF9-tools","PercyStar","Percy6Stars"]},
+  {name:"Video", spec:"BK2 · Bink 2", out:"Playback", note:"Windows · macOS",
+   tools:["PercyStar","Percy6Stars","bink-player-mac","ttpf-studio"]},
+  {name:"Models & maps", spec:"Drawables · placements", out:"glTF / OBJ", note:"+ map data",
+   tools:["SixNG","Percy6Stars","ttpf-studio","Leonida","6stars","6to5m","rage9-re"]},
+  {name:"Shaders", spec:"RDNA2 · GFX10.3", out:"SPIR-V / DXIL", note:"26,503 lifted",
+   tools:["Leonida","americas-recomp","OpenScarlett","xbox-emulator","Xbox2Windows","xcl"]},
+  {name:"Executable", spec:"PE32+ · d3d12_xs · kernelx", out:"PC runtime", note:"does not boot yet",
+   tools:["OpenScarlett","xbox-emulator","TomBox","Xbox2Windows","xcl","ScarlettX","XValkyrie","TuxBox","PercyScarlett","scarlett-layer","americas-recomp","GTAVI-Recomp"]},
+];
+const SPECS = ["GTA6-Asset-Info","gta-vi-port-research","RPF9-tools","0x52504639","rage9-re"];
+// Dusk sky at the left to the horizon at the right; the last two bands are light enough for dark text.
+const BANDS = ["#1b1a45","#3b2466","#6c2a78","#a92f72","#d8475a","#f0783c","#f7ab47"];
+
+document.getElementById("cols").innerHTML = COLS.map((l, i) => `
+  <div class="col ${i >= 5 ? "lt" : ""}" style="background:${BANDS[i]}">
+    <div class="c">${l.tools.length}</div>
+    <div class="n">${l.name}</div>
+    <div class="sp">${l.spec}</div>
+    <div class="tl">${l.tools.map(t => `<div>${t}</div>`).join("")}</div>
+    <div class="o">${l.out}<small>${l.note}</small></div>
+  </div>`).join("");
+document.getElementById("specs").innerHTML = `<b>Format specs</b> &nbsp;${SPECS.join(" · ")}`;
+</script>
 </body>
 </html>

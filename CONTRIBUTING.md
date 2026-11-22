@@ -14,5 +14,7 @@ Every entry must satisfy all of the following:
 ## Pull Request Format
 
 - Add one item per PR (or one tightly scoped category update) in alphabetical or logical order inside the matching table in `README.md`.
-- Keep descriptions concise, concrete, and free of hype. State the language/stack, target platform, and what the repo actually implements.
+- Tables have two columns. The first holds the project name, its star badge, and a small line with stack, license, and platform:
+  `| **[Name](https://github.com/owner/repo)**&nbsp;<star badge><br><sub>Rust (`MIT`) · Windows</sub> | Description |` (copy a neighbouring row).
+- Keep descriptions to one to three sentences, concrete and free of hype: what the repo actually implements and what does not work yet. Version-by-version detail belongs in the project's own README.
 - Verify that the repository is public and actively accessible.

@@ -26,8 +26,8 @@ OUT = SRC.parent
 
 # name -> (css width, viewport height, device scale factor, transparent corners)
 TARGETS = {
-    "banner": (1280, 420, 1.5, True),
-    "ecosystem-map": (1280, 900, 2, True),
+    "banner": (1280, 400, 2, True),
+    "ecosystem-map": (960, 600, 2, True),  # 960 wide so small type survives README width
     "social-preview": (1280, 640, 1, False),  # GitHub wants exactly 1280x640
 }
 
@@ -46,7 +46,7 @@ def main() -> None:
             out = OUT / f"{name}.png"
             # Screenshot the card itself so its height follows the content.
             page.locator(".card").screenshot(path=str(out), omit_background=transparent)
-            # Film grain bloats PNGs ~4x; pngquant gets them back under ~400 KB.
+            # Photo and grain PNGs are large; pngquant gets them back under ~400 KB.
             if shutil.which("pngquant"):
                 subprocess.run(["pngquant", "--quality", "80-95", "--speed", "1", "--force",
                                 "--output", str(out), str(out)], check=True)
