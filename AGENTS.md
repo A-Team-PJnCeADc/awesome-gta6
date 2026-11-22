@@ -18,7 +18,7 @@ Curated awesome list. `README.md` is the product; keep entries factual and clean
 ## README layout
 
 - Top of the page stays short: banner, tagline, one badge row, nav row, one-line warning. The long callouts live in "Safety & Scope" near the end. No Contents list (the nav row and GitHub's outline cover it).
-- Project tables have two columns: `**[Name](url)**&nbsp;<star badge><br><sub>stack (license) · platform</sub>` and a description of one to three sentences. Copy a neighbouring row for the badge markup. Trim, don't pile on: per-release detail belongs in the project's README.
+- Project tables have two columns: `**[Name](url)**&nbsp;<star badge><br><sub>stack (license) · platform</sub>` and a description of one to three sentences. Copy a neighbouring row for the badge markup (`style=flat`, `height="24"`, `align="texttop"` keeps it centred on the name). The run of `&nbsp;` after "Project" in each table header is deliberate: it keeps the first column wide enough that the star badge never wraps under the name. Trim, don't pile on: per-release detail belongs in the project's README.
 - `social-preview.png` must stay exactly 1280x640 and under 1 MB; upload it in repo Settings > Social preview after changes.
 
 ---
