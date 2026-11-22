@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+message: "If you use or build on this project, please credit it as below."
+type: software
+title: "Awesome GTA VI Reverse Engineering"
+abstract: "A curated, checked list of GTA VI reverse engineering tools, decoders and format docs."
+authors:
+  - given-names: Ahmet
+    family-names: Dedeler
+    alias: Ahmet-Dedeler
+    website: "https://ahmetdedeler.com"
+repository-code: "https://github.com/Ahmet-Dedeler/awesome-gta6-reverse-engineering"
+url: "https://github.com/Ahmet-Dedeler/awesome-gta6-reverse-engineering"
+license: CC0-1.0

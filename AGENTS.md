@@ -14,3 +14,7 @@ Curated awesome list. `README.md` is the product; keep entries factual and clean
 - Ship PNGs, not SVGs with text: GitHub renders `<img>` SVGs without web fonts, so text reflows per OS.
 - When a project is added to or removed from the README, update the lanes in `assets/src/ecosystem-map.html` and re-render.
 - `social-preview.png` must stay exactly 1280x640 and under 1 MB; upload it in repo Settings > Social preview after changes.
+
+---
+
+Ahmet Dedeler · [github.com/Ahmet-Dedeler](https://github.com/Ahmet-Dedeler) · [ahmetdedeler.com](https://ahmetdedeler.com)
