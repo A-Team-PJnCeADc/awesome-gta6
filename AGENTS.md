@@ -5,7 +5,7 @@ Curated awesome list. `README.md` is the product; keep entries factual and clean
 ## Graphics
 
 - `assets/banner.png`, `assets/ecosystem-map.png` and `assets/social-preview.png` are **rendered**, not hand-edited.
-  Sources live in `assets/src/*.html` (+ `shared.css`, `sunset.jpg`). Re-render with:
+  Sources live in `assets/src/*.html` (+ `sunset.jpg`). Re-render with:
 
   ```bash
   uv run assets/src/render.py

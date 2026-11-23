@@ -33,9 +33,14 @@ TARGETS = {
 
 
 def main() -> None:
+    only = set(sys.argv[1:])  # optional: render just these names
+    unknown = sorted(only - TARGETS.keys())
+    if unknown:
+        valid = ", ".join(TARGETS)
+        sys.exit(f"unknown target(s): {', '.join(unknown)} (valid: {valid})")
+
     with sync_playwright() as p:
         browser = p.chromium.launch(channel="chrome")
-        only = set(sys.argv[1:])  # optional: render just these names
         for name, (w, h, scale, transparent) in TARGETS.items():
             if only and name not in only:
                 continue
@@ -46,10 +51,15 @@ def main() -> None:
             out = OUT / f"{name}.png"
             # Screenshot the card itself so its height follows the content.
             page.locator(".card").screenshot(path=str(out), omit_background=transparent)
-            # Photo and grain PNGs are large; pngquant gets them back under ~400 KB.
+            # Photo PNGs are large; pngquant gets them back under ~400 KB.
             if shutil.which("pngquant"):
-                subprocess.run(["pngquant", "--quality", "80-95", "--speed", "1", "--force",
-                                "--output", str(out), str(out)], check=True)
+                res = subprocess.run(
+                    ["pngquant", "--quality", "80-95", "--speed", "1", "--force",
+                     "--output", str(out), str(out)],
+                    check=False,
+                )
+                if res.returncode not in (0, 98, 99):
+                    raise subprocess.CalledProcessError(res.returncode, res.args)
             print(f"wrote {out.relative_to(OUT.parent)}")
             page.close()
         browser.close()

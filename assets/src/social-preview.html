@@ -2,12 +2,15 @@
 <!--
   GitHub social preview (Settings > General > Social preview).
   Rendered to assets/social-preview.png at exactly 1280x640 by render.py.
+  Deliberately plain to match banner.html: photo, flat colours, one typeface per job.
 -->
 <html>
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" href="shared.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=IBM+Plex+Sans:wght@500;600&family=IBM+Plex+Mono:wght@500&display=block">
 <style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #17132e; -webkit-font-smoothing: antialiased; }
   body { width: 1280px; height: 640px; }
 
   .card {
@@ -15,47 +18,74 @@
     width: 1280px;
     height: 640px;
     overflow: hidden;
-    background: var(--night) url("sunset.jpg") 78% 40% / auto 108% no-repeat;
+    display: flex;
+    flex-direction: column;
+    background: #17132e;
   }
-  .card::before {
-    content: "";
+
+  .hero {
+    position: relative;
+    flex: 1;
+    background: #0b0d1a url("sunset.jpg") right 44% / cover no-repeat;
+  }
+
+  .tag {
     position: absolute;
-    inset: 0;
-    background:
-      linear-gradient(90deg, rgba(8,10,22,0.94) 0%, rgba(8,10,22,0.78) 38%, rgba(8,10,22,0.15) 70%, rgba(8,10,22,0) 85%),
-      linear-gradient(0deg, rgba(8,10,22,0.7) 0%, rgba(8,10,22,0) 34%);
+    left: 68px;
+    top: 56px;
+    font: 600 16px/1 "IBM Plex Sans", sans-serif;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.72);
   }
 
-  .content { position: absolute; inset: 72px 72px 60px; display: flex; flex-direction: column; }
+  .title-block {
+    position: absolute;
+    left: 64px;
+    bottom: 54px;
+    color: #fff;
+    max-width: 960px;
+  }
 
-  .eyebrow { font: 500 14px/1 var(--mono); letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-dim); display: flex; gap: 12px; align-items: center; }
-  .eyebrow .rule { width: 28px; height: 1px; background: var(--ink-faint); }
+  h1 {
+    font: 700 128px/0.95 "Oswald", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: -0.005em;
+  }
+  h1 span { color: #ff9a4d; }
 
-  h1 { margin-top: 34px; font: 900 150px/0.84 var(--sans); letter-spacing: -0.05em; color: var(--ink); }
-  .sub { margin-top: 10px; font: italic 400 86px/1 var(--serif); letter-spacing: -0.01em; color: var(--ink); }
+  p {
+    margin-top: 26px;
+    font: 500 23px/1.35 "IBM Plex Sans", sans-serif;
+    color: rgba(255, 255, 255, 0.86);
+  }
 
-  .bottom { margin-top: auto; display: flex; justify-content: space-between; align-items: flex-end; }
-  .chips { display: flex; gap: 8px; }
-  .chip { font: 500 15px/1 var(--mono); color: var(--ink); padding: 10px 13px; border-radius: 999px; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.16); }
-  .chip b { font-weight: 500; color: var(--amber); }
-  .url { font: 500 14px/1 var(--mono); color: var(--ink-dim); }
+  .bar {
+    height: 58px;
+    padding: 0 68px;
+    background: #17132e;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font: 500 15px/1 "IBM Plex Mono", ui-monospace, monospace;
+    color: rgba(255, 255, 255, 0.78);
+  }
+  .bar .topics b { font-weight: 500; color: #f7ab47; }
+  .bar .url { color: rgba(255, 255, 255, 0.62); }
 </style>
 </head>
 <body>
-  <div class="card grain">
-    <div class="content">
-      <div class="eyebrow">Awesome list <span class="rule"></span> clean-room <span class="rule"></span> open source</div>
-      <h1>GTA <span class="sunset-text">VI</span></h1>
-      <div class="sub">Reverse Engineering</div>
-      <div class="bottom">
-        <div class="chips">
-          <div class="chip">RPF9</div>
-          <div class="chip">TTPF</div>
-          <div class="chip">ADAT <b>·</b> AWC</div>
-          <div class="chip">RDNA2 <b>→</b> SPIR-V</div>
-        </div>
-        <div class="url">Ahmet-Dedeler/awesome-gta6-reverse-engineering</div>
+  <div class="card">
+    <div class="hero">
+      <div class="tag">Awesome list · Clean-room · Open source</div>
+      <div class="title-block">
+        <h1>GTA <span>VI</span> Reverse<br>Engineering</h1>
+        <p>Open-source tools, decoders and format docs for Rockstar's RAGE 9 engine.</p>
       </div>
+    </div>
+    <div class="bar">
+      <div class="topics"><b>RPF9</b> · TTPF · ADAT / AWC · BK2 · RDNA2 → SPIR-V</div>
+      <div class="url">Ahmet-Dedeler/awesome-gta6-reverse-engineering</div>
     </div>
   </div>
 </body>
