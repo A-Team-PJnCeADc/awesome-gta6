@@ -15,6 +15,7 @@
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-CC0_1.0-1a1b2e?style=flat-square" alt="License: CC0-1.0"></a>
   <a href="CONTRIBUTING.md"><img src="https://img.shields.io/badge/PRs-welcome-ff5c8a?style=flat-square" alt="PRs welcome"></a>
   <a href="https://github.com/Ahmet-Dedeler/awesome-gta6-reverse-engineering/commits/main"><img src="https://img.shields.io/github/last-commit/Ahmet-Dedeler/awesome-gta6-reverse-engineering?style=flat-square&color=ff8a3d&label=updated" alt="Last commit"></a>
+  <a href="https://discord.gg/CjcDBg3nf"><img src="https://img.shields.io/badge/Discord-join-5865F2?style=flat-square&logo=discord&logoColor=white" alt="Join the Discord"></a>
 </p>
 
 <p align="center">
@@ -182,6 +183,8 @@ Know an open-source RAGE 9 / RPF9 / GTA VI reverse engineering tool, library, or
 
 1. Check [CONTRIBUTING.md](CONTRIBUTING.md) to verify clean-room compliance and format guidelines.
 2. Open a pull request or [submit a project via the issue form](https://github.com/Ahmet-Dedeler/awesome-gta6-reverse-engineering/issues/new?template=submit-project.yml).
+
+Questions, or want to talk formats? [Join the Discord](https://discord.gg/CjcDBg3nf).
 
 ## License
 
